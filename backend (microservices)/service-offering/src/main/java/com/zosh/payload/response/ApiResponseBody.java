@@ -1,0 +1,93 @@
+package com.zosh.payload.response;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zosh.domain.InternalCodeEnum;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiResponseBody<T> {
+
+    private boolean success;
+    private String message;
+
+    @JsonIgnore
+    private InternalCodeEnum internalCode;
+
+    private String timestamp;
+
+    private final T data;
+
+    // Full Constructor
+    public ApiResponseBody(boolean success, String message, InternalCodeEnum internalCode, T data) {
+        this.success = success;
+        this.message = message;
+        this.internalCode = internalCode;
+        this.timestamp = LocalDateTime.now().toString();
+        this.data = data;
+    }
+
+    // Constructor without internalCode
+    public ApiResponseBody(boolean success, String message, T data) {
+        this.success = success;
+        this.message = message;
+        this.timestamp = ZonedDateTime.now(ZoneOffset.UTC)
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"));
+        this.internalCode = null;
+        this.data = data;
+    }
+
+    // Getters
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public InternalCodeEnum getInternalCode() {
+        return internalCode;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    // Setters
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setInternalCode(InternalCodeEnum internalCode) {
+        this.internalCode = internalCode;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "ApiResponseBody{" +
+                "success=" + success +
+                ", message='" + message + '\'' +
+                ", internalCode=" + internalCode +
+                ", timestamp='" + timestamp + '\'' +
+                ", data=" + data +
+                '}';
+    }
+}
