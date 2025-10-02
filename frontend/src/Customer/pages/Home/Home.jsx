@@ -21,7 +21,7 @@ const Home = () => {
                 <Banner />
             </section>
 
-            {/* Services Section and image grid*/}
+            {/* Services Section and images grid*/}
             <section className="px-5 lg:px-20 lg:flex lg:items-start lg:gap-10">
                 {/* Services Column */}
                 <div className="w-full lg:w-1/2">
