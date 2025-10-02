@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@mui/material";
-
 import greenTheme from "./Theme/greenTheme";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
