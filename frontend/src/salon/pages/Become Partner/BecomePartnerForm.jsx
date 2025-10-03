@@ -1,10 +1,9 @@
-import {Alert, Button, Snackbar} from "@mui/material";
-import React, {useEffect, useState} from "react";
+import {Alert, Snackbar} from "@mui/material";
+import React, {useState} from "react";
 
 import SellerAccountForm from "./SalonForm";
-
-// Import Navbar
 import Navbar from "../../../Customer/pages/Navbar/Navbar";
+import Footer from "../../../Customer/pages/Footer/Footer";
 
 const BecomePartner = () => {
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -27,7 +26,6 @@ const BecomePartner = () => {
                             <p className="text-2xl">Join the Marketplace Revolution</p>
                             <p className="text-lg text-teal-500">Boost Your Sales Today</p>
                         </div>
-                        {/* <img src="https://via.placeholder.com/400x300?text=Become+Partner" alt="Partner" /> */}
                     </div>
                 </section>
 
@@ -47,6 +45,9 @@ const BecomePartner = () => {
                     </Alert>
                 </Snackbar>
             </div>
+
+            {/*Footer at bottom */}
+            <Footer />
         </>
     );
 };
